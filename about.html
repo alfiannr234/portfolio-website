@@ -1,0 +1,186 @@
+<link rel="icon" href="image/favicon(2).ico">
+<title>Portfolio Alfian Rabbani</title>
+<link rel="stylesheet" href="atribut/portfolio.css">
+<div class="container">
+    <div id="navbar"></div>
+    <script>
+        fetch("partials/navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
+    </script>
+    <div id="About">
+        <div class="row">
+            <div class="about1">
+                <img src="image/user.jpg">
+            </div>
+            <div class="about2">
+                <h2 class="sub">About <span>me</span></h2>
+                <p style="text-align: justify;">I am a dedicated full-stack developer focused on building robust and
+                    scalable digital solutions. With experience across various frameworks and programming languages like
+                    PHP and Dart, I'm skilled at transforming ideas into fully functional products. I strongly believe
+                    in the importance of clean code and user-centric design, and I always strive to create a seamless
+                    experience for both the end-user and the development team. I'm currently seeking to contribute to
+                    challenging projects and collaborate with dynamic teams to solve complex problems.
+                </p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>UI/UX</span><br>Design Website/App interface</li>
+                        <li><span>App Development</span><br>Building Android apps</li>
+                        <li><span>Web Development</span><br>Website Development</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>2023</span><br>Google Play Academy Study Jam</li>
+                        <li><span>2024 - 2025</span><br>Training at Edusoft Center</li>
+                        <li><span>Current</span><br>-</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2019 - 2022</span><br>Junior High School 9 Surakarta</li>
+                        <li><span>2022 - 2025</span><br>Vocational High School 5 Surakarta</li>
+                        <li><span>2025 - 2029</span><br> Sebelas Maret University</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="skills" class="skills">
+    <div class="sub2">
+        <span>TECHNICAL AND PROFESSIONAL</span>
+        <h2>My Skills</h2>
+    </div>
+    <div class="main-skill">
+        <div class="skill-left">
+            <h3>Techninal Skill</h3>
+            <div class="skill-bar">
+                <div class="info">
+                    <p>Frontend Developer</p>
+                    <p>80%</p>
+                </div>
+                <div class="bar">
+                    <span class="one"></span>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="info">
+                    <p>Backend Developer</p>
+                    <p>51%</p>
+                </div>
+                <div class="bar">
+                    <span class="two"></span>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="info">
+                    <p>JavaScript</p>
+                    <p>35%</p>
+                </div>
+                <div class="bar">
+                    <span class="three"></span>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="info">
+                    <p>Flutter</p>
+                    <p>75%</p>
+                </div>
+                <div class="bar">
+                    <span class="four"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-right">
+            <h3>Professional Skill</h3>
+            <div class="professional">
+                <div class="box">
+                    <div class="circle" data-dots="90" data-percent="80"></div>
+                    <div class="kata">
+                        <big>80%</big>
+                        <small>Team Work</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="90" data-percent="65"></div>
+                    <div class="kata">
+                        <big>65%</big>
+                        <small>Creativity</small><br>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="90" data-percent="90"></div>
+                    <div class="kata">
+                        <big>90%</big>
+                        <small>Comunication</small>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="circle" data-dots="90" data-percent="70"></div>
+                    <div class="kata">
+                        <big>70%</big>
+                        <small>Project Management</small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><br><br><br><br>
+<footer>
+    <div class="copyright" style="left: 4px;">
+        <p>Copyright © Alfian made by Alfian Rabbani</p>
+    </div>
+</footer>
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname) {
+        for (tablink of tablinks) {
+            tablink.classList.remove("active-link");
+        }
+        for (tabcontent of tabcontents) {
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+</script>
+<!-- circle skill -->
+<script>
+    const circle = document.querySelectorAll('.circle');
+    circle.forEach(elem => {
+        var dots = elem.getAttribute("data-dots");
+        var marked = elem.getAttribute("data-percent");
+        var percent = Math.floor(dots * marked / 100);
+        var points = "";
+        var rotate = 360 / dots;
+
+
+        for (let i = 0; i < dots; i++) {
+            points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
+        }
+        elem.innerHTML = points;
+
+        const pointsMarked = elem.querySelectorAll('.points');
+        for (let i = 0; i < percent; i++) {
+            pointsMarked[i].classList.add('marked');
+        }
+    })
+
+</script>

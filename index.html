@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="image/favicon(2).ico">
+    <title>Portfolio Alfian Rabbani</title>
+    <link rel="stylesheet" href="atribut/portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        #header {
+            background-image: url(image/background.webp);
+            width: 100%;
+            height: 103vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #navbar {
+            padding: 10px 10%;
+        }
+
+        /* body{
+        cursor: url(path/icons8-sword-32.png), auto;
+} */
+        /* .header-text button, 
+        .header-text button a{
+        cursor: url(path/icons8-shield-32.png), auto;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="navbar"></div>
+        <script>
+            fetch("partials/navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar").innerHTML = data;
+                });
+        </script>
+        <div class="container">
+            <br><br><br>
+            <div class="change-text">
+                <h3>
+                    <span class="word"> Programmer</span>
+                    <!-- <span class="word"> UI/UX&nbsp;Designer</span> -->
+                    <span class="word"> Web&nbsp;Developer</span>
+                </h3>
+            </div>
+            <div class="profile">
+                <img src="image/profile.webp" width="200px" height="200px">
+            </div>
+            <div class="header-text">
+                <hr>
+                <h1>Hi, I'm <span>Alfian</span><br>Rabbani from <span>Indo</span>nesia</h1>
+                <button><a href="about.html">About Me</a></button><br> <br>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="copyright">
+            <p>Copyright © Alfian made by Alfian Rabbani</p>
+        </div>
+    </footer>
+</body>
+<script src="https://kit.fontawesome.com/845278aa20.js" crossorigin="anonymous"></script>
+<script>
+    let words = document.querySelectorAll(".word");
+    words.forEach((word) => {
+        let letters = word.textContent.split("");
+        word.textContent = "";
+        letters.forEach((letter) => {
+            let span = document.createElement("span");
+            span.textContent = letter;
+            span.className = "letter";
+            word.append(span);
+        });
+    });
+
+    let currentWordIndex = 0;
+    let maxWordIndex = words.length - 1;
+    words[currentWordIndex].style.opacity = "1";
+
+    let changeText = () => {
+        let currentWord = words[currentWordIndex];
+        let nextWord = currentWordIndex === maxWordIndex ? words[0] : words[currentWordIndex + 1];
+
+        Array.from(currentWord.children).forEach((letter, i) => {
+            setTimeout(() => {
+                letter.className = "letter out";
+            }, i * 80);
+        });
+        nextWord.style.opacity = "1";
+        Array.from(nextWord.children).forEach((letter, i) => {
+            letter.className = "letter behind";
+            setTimeout(() => {
+                letter.className = "letter in";
+            }, 340 + i * 80);
+        });
+        currentWordIndex = currentWordIndex === maxWordIndex ? 0 : currentWordIndex + 1;
+    };
+
+    changeText();
+    setInterval(changeText, 3000)
+</script>
+
+</html>

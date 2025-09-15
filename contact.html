@@ -1,0 +1,63 @@
+<link rel="icon" href="image/favicon(2).ico">
+<title>Portfolio Alfian Rabbani</title>
+<link rel="stylesheet" href="atribut/portfolio.css">
+<div class="container">
+    <div id="navbar"></div>
+    <script>
+        fetch("partials/navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
+    </script> <br> <br>
+    <div id="contact">
+        <div class="contact-left">
+            <h1 class="sub-title">Contact <span>me</span></h1>
+            <p><i class="fa-solid fa-paper-plane"></i>alfiancimot234@gmail.com</p>
+            <p><i class="fa-solid fa-square-phone"></i>0895422463384</p>
+            <div class="social">
+                <a target="_blank" href="https://web.facebook.com/alfiannaufal.rabbani.5"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a target="_blank" href="https://www.instagram.com/alfiannrabbani/"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+                <a target="_blank" href="https://www.reddit.com/"><i class="fa-brands fa-reddit"></i></a>
+                <a target="_blank" href="https://github.com/"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+        <div class="contact-right">
+            <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="Email" placeholder="Your Email" required>
+                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <span id="msg"></span>
+        </div>
+    </div>
+</div>
+</div><br><br>
+<footer>
+    <div class="copyright">
+        <p>Copyright © Alfian made by Alfian Rabbani</p>
+    </div>
+</footer>
+<script src="https://kit.fontawesome.com/845278aa20.js" crossorigin="anonymous"></script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxttpkhvYxzvRYHvF6xDsh6n0lk1aLYBHkRPPBISntLB0nbMOOF4LkRl6dpNXLWqzLs/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function () {
+                    msg.innerHTML = ""
+                }, 5000)
+                forms.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+    })
+</script>
