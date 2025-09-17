@@ -867,11 +867,11 @@ form .btn2 {
     }
 } */
 /* --------- css for small screen --------- */
-.container nav i {
+/* .container nav i {
     display: none;
 }
 
-@media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 600px) {
 
     .header-text,
     .change-text {
@@ -900,5 +900,6 @@ form .btn2 {
     nav ul li {
         display: flex;
         margin: 25px;
-    }
+    } */
+
 }
