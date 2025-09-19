@@ -32,16 +32,16 @@
 </head>
 
 <body>
-    <div id="navbar"></div>
-    <script>
-        fetch("partials/navbar.html")
-            .then(response => response.text())
-            .then(data => {
-            document.getElementById("navbar").innerHTML = data;
-            });
-        </script>
     <div id="header">
         <div class="container">
+            <div id="navbar"></div>
+            <script>
+                fetch("partials/navbar.html")
+                    .then(response => response.text())
+                    .then(data => {
+                    document.getElementById("navbar").innerHTML = data;
+                    });
+            </script>
             <br><br><br>
             <div class="change-text">
                 <h3>
@@ -109,3 +109,4 @@
 
 
 </html>
+
