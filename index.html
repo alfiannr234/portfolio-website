@@ -32,15 +32,15 @@
 </head>
 
 <body>
-    <div id="header">
-        <div id="navbar"></div>
-        <script>
-            fetch("partials/navbar.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("navbar").innerHTML = data;
-                });
+    <div id="navbar"></div>
+    <script>
+        fetch("partials/navbar.html")
+            .then(response => response.text())
+            .then(data => {
+            document.getElementById("navbar").innerHTML = data;
+            });
         </script>
+    <div id="header">
         <div class="container">
             <br><br><br>
             <div class="change-text">
@@ -106,5 +106,6 @@
     changeText();
     setInterval(changeText, 3000)
 </script>
+
 
 </html>
